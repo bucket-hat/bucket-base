@@ -1,12 +1,13 @@
 'use strict';
 
 module.exports = () => {
-  class home {
-    constructor() {}
 
-    async index() {
-      return 'Hello Bucket!';
+  class home {
+
+    async index(args) {
+      return `${args}, Hello Bucket!`;
     }
+
   }
   return new home();
 };
