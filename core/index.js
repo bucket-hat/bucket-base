@@ -48,7 +48,8 @@ module.exports = (option) => {
 							})).then(resolve).catch(reject);
 						}
 					});
-
+				} else {
+					resolve();
 				}
 			});
 		});
