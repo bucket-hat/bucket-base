@@ -4,7 +4,7 @@ require('babel-core/register')({
 	ignore: false
 });
 require('./core')({
-	callback : (app)=>{
+	callback: (app) => {
 		require('./app/index')(app);
 	}
 });

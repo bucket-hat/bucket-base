@@ -2,7 +2,7 @@ module.exports = (app) => {
 
   const { logger } = app.library;
   const httpRouter = require('./httpRouter')(app);
-
+  
   logger.debug(httpRouter);
 
   app.beforeExit.push(async() => {

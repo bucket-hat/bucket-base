@@ -1,13 +1,16 @@
 'use strict';
 
-module.exports = app => {
-
+module.exports = (app) => {
   class home extends app.library.controller {
-    async post() {
+    async index() {
       const { ctx } = this;
       const result = await app.service.home.index();
-      ctx.status = 200;
-      ctx.body = result;
+      if(result) {
+        ctx.status = 200;
+        ctx.body = result;
+      } else {
+        ctx.status = 403;
+      }
     }
   }
 
