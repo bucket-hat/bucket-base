@@ -34,16 +34,17 @@ module.exports = (option) => {
 			fs.readdir(componentPath, function (err, files) {
 				if (err)
 					reject(err);
-				console.log('files : ', files);
-				Promise.all(files.map((file) => {
-					const f = path.join(componentPath, file);
-					const name = path.posix.basename(file).split('.', 1)[0];
-					if (flag)
-						obj[name] = new(require(f)(app))();
-					else
-						obj[name] = require(f)(app);
-					debug(`require ${f}, done`);
-				})).then(resolve).catch(reject);
+				if(files) {
+					Promise.all(files.map((file) => {
+						const f = path.join(componentPath, file);
+						const name = path.posix.basename(file).split('.', 1)[0];
+						if (flag)
+							obj[name] = new(require(f)(app))();
+						else
+							obj[name] = require(f)(app);
+						debug(`require ${f}, done`);
+					})).then(resolve).catch(reject);
+				}
 			});
 		});
 	};
